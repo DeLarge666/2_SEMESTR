@@ -12,10 +12,47 @@
 #include "opencv2/highgui.hpp"
 #include <string>
 #include <cstring>
-int main(int argc, char** argv) {
-	setlocale(LC_ALL, "Russian");
 
-	const char* imagename = "HOME.jpg";
+//using namespace std;
+//char* data();
+//void file(char* dt);
+//int main()
+//{
+//	char* dt=data();
+//	file(dt);
+//	
+//}
+//char* data(){
+//	// текущая дата/время на основе текущей системы
+//	time_t now = time(0);
+//	// преобразовывает время в string form
+//	char* dt = ctime(&now);
+//	cout << "The local date and time is: " << dt << endl;
+//	return dt;
+//
+//}
+//void file(char* dt)
+//{
+//	std::ofstream file;
+//	file.open("test.txt", ios_base::app);
+//	unsigned long milliseconds_since_epoch = chrono::system_clock::now().time_since_epoch() / chrono::milliseconds(1);
+//	file << milliseconds_since_epoch <<" = " << dt << endl;
+//	file.close();
+//
+//}
+using namespace cv;
+using namespace std;
+
+void my_mouse_callback(int event, int x, int y, int flags, void* param);
+void reading(string Filename, string imagename, double wl, double hl, double wr, double hr);
+void file();
+
+int main(int argc, char** argv) {
+	
+	setlocale(LC_ALL, "Russian");
+	
+
+	const char* imagename = "home.png";
 	const char* traectory_file = "coordinat.txt";
 	double wl = 55.639799;
 	double hl = 37.828428;
@@ -26,7 +63,7 @@ int main(int argc, char** argv) {
 	cout << "read or enter" << endl;
 	cin >> check;
 	if (check == "read") {
-		reading("coordinat.txt", "HOME.jpg", wl, hl, wr, hr);
+		reading("coordinat.txt", "home.png", wl, hl, wr, hr);
 	}
 	else if (check == "enter") {
 		Mat image = imread("HOME.jpg");
@@ -38,7 +75,7 @@ int main(int argc, char** argv) {
 		}
 	}
 	else {
-		cout << "Ошибка" << endl;
+		cout << "Ошибка ввода" << endl;
 		waitKey(30);
 	}
 	return(0);
@@ -51,7 +88,7 @@ void file()
 	unsigned long milliseconds_since_epoch = chrono::system_clock::now().time_since_epoch() / chrono::milliseconds(1);
 	file << milliseconds_since_epoch << endl;
 	file.close();
-	Mat image = imread("HOME.jpg");
+	Mat image = imread("home.png");
 	namedWindow("modernGoogle");
 	setMouseCallback("modernGoogle", my_mouse_callback, &image);
 	while (true) {
@@ -89,7 +126,7 @@ void reading(string Filename, string imagename, double wl, double hl, double wr,
 	long double shirota, dolgota;
 
 	ifstream f(File);
-	if (!(f.is_open()))  cout << "Ошибка открытия файла" << File;
+	if (!(f.is_open()))  cout << "Ошибка" << File;
 	else
 	{
 		Mat img = imread(imagename);
