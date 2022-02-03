@@ -1,6 +1,8 @@
 ![151953628-b72f8428-80ff-4026-a52c-2faf03776b9d](https://user-images.githubusercontent.com/90608498/152389675-4e3e695c-7eae-4b69-a869-ac31bd58ff43.png)
 ![152306233-538d0fa6-c2c4-4d29-b746-bf9a279985c2](https://user-images.githubusercontent.com/90608498/152389689-ae41ade1-ef14-4e18-9d02-ecedd9e20edb.png)
 ![152306278-4758298a-4214-40a7-96fc-b2ca627449cb](https://user-images.githubusercontent.com/90608498/152389702-48621605-3243-4e89-878d-1822965abf4d.png)
+
+```
 #!/bin/bash
 echo "type name"
 read name
@@ -100,3 +102,4 @@ do
       ;;
   esac
 done
+```
